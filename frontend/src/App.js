@@ -31,9 +31,9 @@ function App() {
     try {
       const response = await fetch('http://localhost:8000/api/v1/prices/STATION123');
       const data = await response.json();
-      setPriceData(data);
-    } catch (error) {
+      setPriceData(Array.isArray(data) ? data : []);    } catch (error) {
       console.error('Error loading prices:', error);
+            setPriceData([]);
     }
   };
 
